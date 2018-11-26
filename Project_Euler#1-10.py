@@ -1,6 +1,56 @@
 #Project Euler - Problems 1-10
 
+#10001st Prime | #7
+#https://projecteuler.net/problem=7
+
+#Yes, this is not remotely efficient, will redo in future
+l1 = list(range(2,500000))
+limit = 10000
+primes = []
+p = 2
+while len(primes) <= limit:
+    l1 = [item for item in l1 if not item % p == 0]
+    primes.append(p)
+    if len(l1) != 1:
+        p = min(l1)
+print(primes[limit])
+
+
+    
+        
+        
+
+
+
+'''
+#Sum Square Difference | #6
+#https://projecteuler.net/problem=6
+
+nums = list(range(1,100))
+numsSummed = sum(nums)
+numsSquared = sum([x**2 for x in nums])
+sumSquareDiff = numsSquared - numsSummed
+print (sumSquareDiff)
+'''
+
+
+'''
+#Smallest Multiple | #5
+#https://projecteuler.net/problem=5
+a = 100000
+i = 20
+while i >=1:
+    if a%i == 0:
+        i -= 1
+    else:
+        i = 20
+        a+= 2
+print(a)
+'''
+
+'''
 #Largest Palindrome Product | #4
+#https://projecteuler.net/problem=4
 min = 100
 max = 999
 result = 0
@@ -12,15 +62,7 @@ for a in range(min,max):
             if prod == prod[::-1]:
                 result = int(prod)
 print(result)
-
-
-
-
-
-
-
-
-
+'''
 
 '''
 #Largest Prime Factor | #3
