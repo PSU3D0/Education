@@ -4,6 +4,41 @@
 #https://projecteuler.net/problem=10
 #Going for an actual sieve this time 
 
+#10 Rework
+
+def sumPrime(n):
+    primes = [True] * n
+    primes[0],primes[1] = [None] * 2
+    count = 0
+    for indice,value in enumerate(primes):
+        if value == True and indice < n**.5:
+            for ind in range(indice*2, len(primes), indice):
+                primes[ind] = False
+#Thanks to /u/gastropner on /r/learnprogramming for the above two lines and
+# advice on working through problems such as this.
+
+    for idx,e in enumerate(primes):
+        if e == True:
+            count += idx
+    return count
+
+
+uIn = int(input("Enter number to calculate sum of primes to number: "))
+print(sumPrime(uIn))
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 import math as m
 
 #Creating boolean dict sequenced by nums 2-maxN
@@ -35,7 +70,7 @@ print(Sum)
 #Just learned about enumerate() replaces all this dict nonsense
 #Will fix in next commit
 
-
+'''
 
 
 '''
