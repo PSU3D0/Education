@@ -15,7 +15,7 @@ def gridProduct(data):
     ct = 0
     highestNum = 0
     for ln in data:
-        while ct < (len(ln)-4):
+        while ct < (len(ln)-3):
             prod = product(ln[0+ct:4+ct])
             if prod > highestNum:
                 highestNum = prod
@@ -23,12 +23,47 @@ def gridProduct(data):
             else: ct+=1
     return highestNum
 
-def diagProduct(data):
+def diagProduct(data,maxNum):
     #Products to right
-    ct = 0
     for ln in data:
-        while ct < (len(ln)-3):
-
+        lnCount = data.index(ln)
+        ct = 0
+        i = 0
+        while ct < (len(ln)-3) and lnCount <= 16 :
+            lnIndex = data.index(ln)
+            prod = []
+            diagCt = 1
+            prod.append(ln[0+ct])
+            i = ct
+            ct +=1
+            while len(prod) < 4:
+                prod.append(data[1+lnIndex][1+i])
+                i+=1
+                lnIndex+=1
+            dResult = product(prod)
+            if dResult > maxNum:
+                maxNum = dResult
+    #Products to left
+    data = [row[::-1] for row in data]
+    for ln in data:
+        lnCount = data.index(ln)
+        ct = 0
+        i = 0
+        while ct < (len(ln)-3) and lnCount <= 16 :
+            lnIndex = data.index(ln)
+            prod = []
+            diagCt = 1
+            prod.append(ln[0+ct])
+            i = ct
+            ct +=1
+            while len(prod) < 4:
+                prod.append(data[1+lnIndex][1+i])
+                i+=1
+                lnIndex+=1
+            dResult = product(prod)
+            if dResult > maxNum:
+                maxNum = dResult
+    return maxNum
 
 
 
@@ -47,4 +82,5 @@ vList = list(zip(*data))
 vMax = gridProduct(vList)
 
 #Iterate Diagonally
-diagProduct(data)
+maxNum = max(hMax,vMax)
+print(diagProduct(data,maxNum))
