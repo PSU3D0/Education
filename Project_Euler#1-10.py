@@ -27,18 +27,10 @@ uIn = int(input("Enter number to calculate sum of primes to number: "))
 print(sumPrime(uIn))
 
 
-
-
-
-
-
-
-
-
-
-
-
 '''
+#--------------------------Old--------------------------
+
+
 import math as m
 
 #Creating boolean dict sequenced by nums 2-maxN
