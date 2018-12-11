@@ -1,4 +1,62 @@
+# Factorial Digit Sum | #20
+#https://projecteuler.net/problem=20
 
+def sumFactorialResult(n):
+    nums = list(range(1,n+1))
+    factorial = 1
+    result = 0
+    
+    for x in nums:
+        factorial *= x
+    factorial = str(factorial)
+
+    for num in factorial:
+        num = int(num)
+        result+=num
+
+    return result
+
+print(sumFactorialResult(100))
+
+
+'''
+#Counting Sundays | #19
+#https://projecteuler.net/problem=19
+#Algorithm https://en.wikipedia.org/wiki/Zeller%27s_congruence
+
+def zellerCongruence(q,m,K,J):
+    #q=day of month, m=month, K=year of century, J=zero based century
+    if m >= 13:
+        K-=1
+    h = q + ((13*(m+1))//5)
+    h += K + (K//4) + (J//4) - 2*J
+    h = h%7
+    if h == 1:
+        return 1
+    else:
+        return 0
+
+#Using Zeller's Congruence
+startYear = 1901
+endYear = 2000
+i = 0
+
+numSundays = 0
+while i < (endYear-startYear):
+    m = 13
+    n = 0
+    while n < 12:
+        numSundays+= zellerCongruence(1,m,((startYear+i)%100),((startYear+i)//100))
+        m+=1
+        n+=1
+        if m ==15:
+            m = 3
+    i+=1
+
+print(numSundays)
+'''
+
+'''
 #Maximum Path Sum I | # 18
 #https://projecteuler.net/problem=18
 
@@ -24,6 +82,7 @@ for row in data:
 
 
 print(sumTotal)
+'''
 '''
 #Number Letter Counts | #17
 #https://projecteuler.net/problem=17
